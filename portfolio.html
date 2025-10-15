@@ -168,11 +168,6 @@ min-height: 100vh;
                         <p class="pl-4">Я увлеченный веб-разработкой и дизайном. Быстро учусь новому, ответственно подхожу к работе. Ищу возможности для профессионального роста и развития.</p>
                     </div>
                     
-                    <div class="mt-8 text-center">
-                        <button class="btn px-6 py-3 rounded-xl glass-card">
-                            <i class="fas fa-download mr-2"></i> Скачать PDF
-                        </button>
-                    </div>
                 </div>
                 <div class="mt-8 text-center">
                     <button onclick="showSection('home')" class="btn px-6 py-3 rounded-xl glass-card">
@@ -194,10 +189,10 @@ min-height: 100vh;
                                     <i class="fas fa-phone text-white text-2xl"></i>
                                 </div>
                                 <h4 class="text-lg font-semibold mb-1">Телефон</h4>
-                                <p class="text-green-300 hover:text-green-100 transition-colors duration-300">
-                                    <a href="tel:+79259996682">+7 925 999 66 82</a>
+                                <p class="text-green-300 hover:text-green-100 transition-colors duration-300 cursor-pointer" onclick="copyPhoneNumber()">
+                                    +7 925 999 66 82
                                 </p>
-                            </div>
+</div>
                             
                             <!-- Telegram -->
                             <a href="https://t.me/r1nchik078" target="_blank" class="glass-card p-6 rounded-2xl hover:bg-white/10 transition-all duration-300 flex flex-col items-center text-center block">
@@ -219,11 +214,6 @@ min-height: 100vh;
                 </div>
             </div>
         </div>
-        
-        <!-- Footer -->
-        <div class="text-center mt-8 opacity-70 text-sm">
-            <p>© 2023 Жуков Иван. Все права защищены.</p>
-        </div>
     </div>
 
     <script>
@@ -243,7 +233,6 @@ min-height: 100vh;
         document.querySelectorAll('.floating').forEach(el => {
             el.style.animationDelay = `${Math.random() * 2}s`;
         });
-        
         document.querySelectorAll('.glass-card').forEach(card => {
             card.addEventListener('mouseenter', () => {
                 card.style.transform = 'translateY(-5px)';
@@ -255,6 +244,15 @@ min-height: 100vh;
                 card.style.boxShadow = '';
             });
         });
-    </script>
+
+        function copyPhoneNumber() {
+            const phoneNumber = '+79259996682';
+            navigator.clipboard.writeText(phoneNumber).then(() => {
+                alert('Номер скопирован в буфер обмена: ' + phoneNumber);
+            }).catch(err => {
+                console.error('Не удалось скопировать номер: ', err);
+            });
+        }
+</script>
 </body>
 </html>
