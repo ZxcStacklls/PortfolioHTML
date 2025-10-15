@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жуков Иван | Портфолио</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #3D154B 0%, #DF3542 50%, #FFD29C 100%);
+min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        
+        .btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover::after {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .profile-img {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="container mx-auto max-w-6xl">
+        <!-- Main Content -->
+        <div class="glass-card p-8 md:p-12 rounded-3xl">
+            <!-- Header with Navigation -->
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4 md:mb-0">Жуков Иван</h1>
+                <div class="flex space-x-4">
+                    <button onclick="showSection('home')" class="btn px-4 py-2 rounded-full glass-card">Главная</button>
+                    <button onclick="showSection('resume')" class="btn px-4 py-2 rounded-full glass-card">Резюме</button>
+                    <button onclick="showSection('contacts')" class="btn px-4 py-2 rounded-full glass-card">Контакты</button>
+</div>
+            </div>
+            
+            <!-- Home Section -->
+            <div id="home" class="section active">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="w-full md:w-1/2 flex justify-center">
+                        <img src="logo.png" alt="Фото Жукова Ивана" 
+                             class="profile-img w-48 h-48 md:w-64 md:h-64 rounded-full object-cover floating">
+</div>
+                    <div class="w-full md:w-1/2">
+                        <h2 class="text-2xl md:text-3xl font-semibold mb-4">Привет, я Иван</h2>
+                        <p class="text-lg mb-6">Мне 17 лет, я проживаю в Москве и учусь по направлению Графический Дизайнер в 1 моке. Этот сайт - мое портфолио, где вы можете узнать обо мне больше.</p>
+                        <div class="flex flex-wrap gap-4">
+                            <button onclick="showSection('contacts')" class="btn px-6 py-3 rounded-xl glass-card flex items-center">
+                                <i class="fas fa-envelope mr-2"></i> Связаться
+                            </button>
+                        </div>
+</div>
+                </div>
+            </div>
+<!-- Resume Section -->
+            <div id="resume" class="section hidden">
+                <h2 class="text-3xl font-bold mb-8 text-center">Мое резюме</h2>
+                <div class="glass-card p-8 rounded-2xl max-w-3xl mx-auto">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold mb-4 border-b pb-2">Образование</h3>
+                        <div class="pl-4">
+                            <p class="font-medium">Колледж 1 мок</p>
+                            <p class="text-sm opacity-80">Среднее общее образование</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold mb-4 border-b pb-2">Навыки</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pl-4">
+                            <div>
+                                <p class="font-medium">Adobe Illustrator</p>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5 mt-1">
+                                    <div class="bg-blue-500 h-2.5 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-medium">PowerPoint</p>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5 mt-1">
+                                    <div class="bg-blue-500 h-2.5 rounded-full" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-medium">Дизайн</p>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5 mt-1">
+                                    <div class="bg-blue-500 h-2.5 rounded-full" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-medium">Photoshop</p>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5 mt-1">
+                                    <div class="bg-blue-500 h-2.5 rounded-full" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 border-b pb-2">О себе</h3>
+                        <p class="pl-4">Я увлеченный веб-разработкой и дизайном. Быстро учусь новому, ответственно подхожу к работе. Ищу возможности для профессионального роста и развития.</p>
+                    </div>
+                    
+                    <div class="mt-8 text-center">
+                        <button class="btn px-6 py-3 rounded-xl glass-card">
+                            <i class="fas fa-download mr-2"></i> Скачать PDF
+                        </button>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <button onclick="showSection('home')" class="btn px-6 py-3 rounded-xl glass-card">
+                        <i class="fas fa-arrow-left mr-2"></i> На главную
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Contacts Section -->
+            <div id="contacts" class="section hidden">
+                <h2 class="text-3xl font-bold mb-8 text-center">Мои контакты</h2>
+                <div class="glass-card p-8 rounded-2xl max-w-2xl mx-auto transform transition-all duration-500 hover:scale-[1.02]">
+                    <div class="flex flex-col items-center">
+                        <h3 class="text-2xl font-bold mb-8 text-center">Свяжитесь со мной</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+                            <!-- Phone -->
+                            <div class="glass-card p-6 rounded-2xl hover:bg-white/10 transition-all duration-300 flex flex-col items-center text-center">
+                                <div class="bg-gradient-to-br from-green-400 to-emerald-400 p-4 rounded-full mb-4 shadow-lg">
+                                    <i class="fas fa-phone text-white text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold mb-1">Телефон</h4>
+                                <p class="text-green-300 hover:text-green-100 transition-colors duration-300">
+                                    <a href="tel:+79259996682">+7 925 999 66 82</a>
+                                </p>
+                            </div>
+                            
+                            <!-- Telegram -->
+                            <a href="https://t.me/r1nchik078" target="_blank" class="glass-card p-6 rounded-2xl hover:bg-white/10 transition-all duration-300 flex flex-col items-center text-center block">
+                                <div class="bg-gradient-to-br from-blue-400 to-blue-500 p-4 rounded-full mb-4 shadow-lg">
+                                    <i class="fab fa-telegram text-white text-2xl"></i>
+                                </div>
+                                <h4 class="text-lg font-semibold mb-1">Telegram</h4>
+                                <p class="text-blue-300 hover:text-blue-100 transition-colors duration-300">
+                                    @r1nchik078
+                                </p>
+                            </a>
+</div>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <button onclick="showSection('home')" class="btn px-6 py-3 rounded-xl glass-card">
+                        <i class="fas fa-arrow-left mr-2"></i> На главную
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="text-center mt-8 opacity-70 text-sm">
+            <p>© 2023 Жуков Иван. Все права защищены.</p>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+                section.classList.add('hidden');
+            });
+            
+            const section = document.getElementById(sectionId);
+            section.classList.remove('hidden');
+            setTimeout(() => {
+                section.classList.add('active');
+            }, 10);
+        }
+        
+        document.querySelectorAll('.floating').forEach(el => {
+            el.style.animationDelay = `${Math.random() * 2}s`;
+        });
+        
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+                card.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.3)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+                card.style.boxShadow = '';
+            });
+        });
+    </script>
+</body>
+</html>
